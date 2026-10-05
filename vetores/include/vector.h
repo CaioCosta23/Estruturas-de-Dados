@@ -32,11 +32,12 @@ unsigned int vectorSize(Vector *vector);
 Vector *vectorCopy(Vector *vector);
 
 /**
- * @brief Addes an element on the end of the vector; 
+ * @brief Adds an element on the end of the vector; 
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
+ * @param data Data to be added in final of the vector;
  */
-void vectorPushBack(Vector *vector);
+void vectorPushBack(Vector *vector, dataType data);
 
 /**
  * @brief Searchs for an element in the vector;
@@ -145,7 +146,7 @@ void vectorSort(Vector *vector);
  * @param index1 Index of the position of the first element to be swapped with second in the vector;
  * @param index2 Index of the position of the second element to be swapped with first in the vector;
  */
-void vectorSwapp(Vector *vector, unsigned int index1, unsigned int index2);
+void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2);
 
 /**
  * @brief Peforms a binary search for a element in the vector;
