@@ -70,19 +70,17 @@ void vectorSet(Vector *vector, unsigned int index, dataType data);
  * @brief Searchs the biggest element and return your index in the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @param data Element sought in the vector;
  * @return int Index of the biggest element in the vector;
  */
-unsigned int vectorArgMax(Vector *vector, dataType data);
+unsigned int vectorArgMax(Vector *vector);
 
 /**
  * @brief Searchs the smallest element and return your index in the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @param data Element sought in the vector;
  * @return int Index of the smallest element in the vector;
  */
-unsigned int vectorArgMin(Vector *vector, dataType data);
+unsigned int vectorArgMin(Vector *vector);
 
 /**
  * @brief Searchs biggest element in the vector;
