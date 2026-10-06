@@ -46,34 +46,25 @@ void vectorPushBack(Vector *vector, dataType data);
  * @param data Data sought in the vector;
  * @return dataType Sought-after element if found, or -1 otherwise; 
  */
-dataType *vectorFind(Vector *vector, dataType *data);
+dataType vectorFind(Vector *vector, dataType data);
 
 /**
  * @brief Get an specific element in the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
  * @param index Index of the sought element in the vector;
- * @return dataType* Sought-after element if found, or -1 otherwise;
+ * @return dataType Sought-after element;
  */
-dataType *vectorGet(Vector *vector, unsigned int index);
+dataType vectorGet(Vector *vector, unsigned int index);
 
 /**
  * @brief Replace an element in especific index in the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @param index Index of position where the nes element will added;
+ * @param index Index of position where the nes element will be added;
  * @param data Element thats replace another in the vector;
  */
 void vectorSet(Vector *vector, unsigned int index, dataType data);
-
-/**
- * @brief Searchs the smallest element and return your index in the vector;
- * 
- * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @param data Element sought in the vector;
- * @return int Index of the smallest element in the vector;
- */
-int vectorArgMax(Vector *vector, dataType data);
 
 /**
  * @brief Searchs the biggest element and return your index in the vector;
@@ -82,7 +73,16 @@ int vectorArgMax(Vector *vector, dataType data);
  * @param data Element sought in the vector;
  * @return int Index of the biggest element in the vector;
  */
-int vectorArgMin(Vector *vector, dataType data);
+unsigned int vectorArgMax(Vector *vector, dataType data);
+
+/**
+ * @brief Searchs the smallest element and return your index in the vector;
+ * 
+ * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
+ * @param data Element sought in the vector;
+ * @return int Index of the smallest element in the vector;
+ */
+unsigned int vectorArgMin(Vector *vector, dataType data);
 
 /**
  * @brief Searchs biggest element in the vector;
@@ -96,7 +96,7 @@ dataType vectorMax(Vector *vector);
  * @brief Searchs biggest element in the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @return dataType Smallest element in the vector
+ * @return dataType Smallest element in the vector;
  */
 dataType vectorMin(Vector *vector);
 
@@ -124,7 +124,7 @@ void vectorPopBack(Vector *vector);
 void vectorInsert(Vector *vector, unsigned int index, dataType data);
 
 /**
- * @brief Removes a element at a specific position frm the vector;
+ * @brief Removes an element at a specific position from the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
  * @param index Index where element will be removed in the vector;
