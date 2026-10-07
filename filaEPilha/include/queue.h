@@ -31,7 +31,7 @@ void queueEnqueue(Queue *queue, dataType data);
 dataType queueDequeue(Queue *queue);
 
 /**
- * @brief Cheks if the queue is e
+ * @brief Cheks if the queue is empty;
  * 
  * @param queue Pointer to the Abstract Data Type represent a structure that contains (update) informations for a queue;
  * @return int 1 (true) if queue is empty or 0 (false), otherwhise;
