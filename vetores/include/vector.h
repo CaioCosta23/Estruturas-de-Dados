@@ -156,6 +156,13 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2);
 unsigned int vectorBinarySearch(Vector *vector, dataType data);
 
 /**
+ * @brief Reverse the vector;
+ * 
+ * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
+ */
+void vectorReverse(Vector *vector);
+
+/**
  * @brief Clear (removes all elements in the) vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
