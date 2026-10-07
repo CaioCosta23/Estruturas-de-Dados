@@ -8,6 +8,8 @@ int main() {
 
     vector = vectorConstruct();
 
+    // À fazer;
+
     vectorDestroy(vector);
 
     return 0;
