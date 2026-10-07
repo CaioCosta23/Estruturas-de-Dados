@@ -197,6 +197,7 @@ dataType vectorRemove(Vector *vector, unsigned int index) {
 
 void vectorSort(Vector *vector) {
     unsigned int d1, d2;
+
     for(d1 = 0; d1 < (vector->size - 1); d1++)
         for(d2 = d1 + 1; d2 < vector->size; d2++)
             if (compare(vector->data[d1], vector->data[d2]) == 1)
@@ -212,13 +213,6 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2) {
     vector->data[index2] = auxiliar;
 }
 
-/**
- * @brief Peforms a binary search for a element in the vector;
- * 
- * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @param data Element sought in the vector;
- * @return dataType Element found in the vector, or -1 otherwise;
- */
 unsigned int vectorBinarySearch(Vector *vector, dataType data) {
     const int NOT_FOUND = -1;
     unsigned int inicio, meio, fim;
@@ -241,6 +235,14 @@ unsigned int vectorBinarySearch(Vector *vector, dataType data) {
     }
 
     return NOT_FOUND;
+}
+
+void vectorReverse(Vector *vector) {
+    unsigned int d1, d2;
+    
+    for(d1 = 0; d1 < (vector->size - 1); d1++)
+        for(d2 = d1 + 1; d2 < vector->size; d2++)
+            vectorSwap(vector, d1, d2);
 }
 
 void vectorClear(Vector *vector) {
