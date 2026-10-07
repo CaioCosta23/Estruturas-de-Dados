@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "include/vector.h"
+#include "../include/vector.h"
 
 #define INITIAL_SIZE_ALLOCATED 50
 
@@ -219,10 +219,26 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2) {
  * @param data Element sought in the vector;
  * @return dataType Element found in the vector, or -1 otherwise;
  */
-dataType vectorBinarySearch(Vector *vector, dataType data) {
+unsigned int vectorBinarySearch(Vector *vector, dataType data) {
     const int NOT_FOUND = -1;
-    
-    // à fazer;
+    unsigned int inicio, meio, fim;
+
+    vectorSort(vector);
+
+    inicio = 0;
+    fim = vectorSize(vector);
+
+    while(inicio <= fim) {
+        meio = inicio + (fim - inicio) / 2;
+
+        if (vector->data[meio] == data)
+            return vector->data;
+
+        if (vector->data[meio] < data)
+            fim = meio -1;
+        else
+            inicio = meio + 1;
+    }
 
     return NOT_FOUND;
 }
