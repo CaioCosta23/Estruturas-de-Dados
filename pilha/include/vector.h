@@ -114,10 +114,10 @@ void vectorPopBack(Vector *vector);
  * @brief Insert an element at the pecific position in the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
- * @param inndex Index where element will be added  in the vector;
+ * @param index Index where element will be added  in the vector;
  * @param data Element to be added in the vector;
  */
-void vectorInsert(Vector *vector, unsigned int inndex, dataType *data);
+void vectorInsert(Vector *vector, unsigned int index, dataType data);
 
 /**
  * @brief Removes an element at the specific position from the vector;
@@ -151,7 +151,7 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2);
  * @param data Element sought in the vector;
  * @return dataType Element found in the vector, or -1, otherwise;
  */
-dataType vectorBinarySearch(Vector *vector, dataType *data);
+dataType vectorBinarySearch(Vector *vector, dataType data);
 
 /**
  * @brief Clear (removes all elements in the) vector;
