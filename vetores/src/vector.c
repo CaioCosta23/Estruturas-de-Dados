@@ -180,9 +180,8 @@ void vectorInsert(Vector *vector, unsigned int index, dataType data) {
     if (vector->size == vector->allocated)
         vectorReallocation(vector);
 
-    vector->size += 1;
-
     pushBackElements(vector, index);
+    vector->size += 1;
 
     vector->data[index] = data;
 }
