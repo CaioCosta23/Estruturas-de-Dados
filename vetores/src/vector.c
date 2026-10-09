@@ -118,16 +118,16 @@ unsigned int vectorSize(Vector *vector) {
 }
 
 Vector *vectorCopy(Vector *vector) {
-    Vector *vector;
+    Vector *vectorCopy;
 
-    vector = vectorConstruct();
+    vectorCopy = vectorConstruct();
 
     unsigned int d;
 
     for(d = 0; d < vector->size; d++)
-        vectorPushBack(vector, vectorGet(vector, d));
+        vectorPushBack(vectorCopy, vector->data[d]);
 
-    return vector;
+    return vectorCopy;
 }
 
 void vectorPushBack(Vector *vector, dataType data) {
