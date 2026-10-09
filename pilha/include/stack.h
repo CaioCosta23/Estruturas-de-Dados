@@ -1,9 +1,9 @@
 #ifndef _STACK_H_
 #define _STACK_H__
 
-#include "vector.h"
+#include "../include/vector.h"
 
-typedef struct Stack stack;
+typedef struct Stack Stack;
 
 /**
  * @brief Create (dynamically allocated memory for) a stack; 
