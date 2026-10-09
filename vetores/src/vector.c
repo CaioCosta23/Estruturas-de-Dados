@@ -79,7 +79,9 @@ static void pushBackElements(Vector *vector, unsigned int index) {
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
  */
 static void vectorReallocation(Vector *vector) {
-    vector->allocated = (dataType*)realloc(vector->data, vector->allocated * sizeof(dataType));
+    vector->allocated *= 2;
+    
+    vector->data = (dataType*)realloc(vector->data, vector->allocated * sizeof(dataType));
 
     if (vector->data == NULL) {
         printf("Erro! Realocacao de memoria de dadaos do vetor mal-sucedida.\n");
