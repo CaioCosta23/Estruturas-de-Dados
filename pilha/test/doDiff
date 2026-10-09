@@ -1,0 +1,8 @@
+rm -rf results
+mkdir results
+../main/main < input/test1 > results/file1
+../main/main < input/test2 > results/file2
+../main/main < input/test3 > results/file3
+diff output/test1 results/file1
+diff output/test2 results/file2
+diff output/test3 results/file3
