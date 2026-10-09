@@ -171,7 +171,7 @@ dataType vectorMin(Vector *vector) {
 void vectorPopFront(Vector *vector) {
     dataType dataRemoved;
 
-    dataRemoved = vectorRemove(vector, (vector->size - 1));
+    dataRemoved = vectorRemove(vector, 0);
 }
 
 void vectorPopBack(Vector *vector) {
