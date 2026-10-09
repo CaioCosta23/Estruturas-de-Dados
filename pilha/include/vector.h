@@ -13,6 +13,14 @@ typedef struct Vector Vector;
 Vector *vectorConstruct();
 
 /**
+ * @brief Set the callback function to compare two elements in the vector;
+ * 
+ * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
+ * @param function Callback function to compare two elements in the vector;
+ */
+void vectorSetCompareFunction(Vector *vector, fptr function);
+
+/**
  * @brief Get get size to the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
