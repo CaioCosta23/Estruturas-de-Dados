@@ -40,7 +40,7 @@ float getProductDiscount(Product *product);
  * @param poduct Pointer to the Absract Data Type representing a structure that contains the (update) information for a product;
  * @return unsigned int Quantity for a product;
  */
-unsigned int getQuantityProduct(Product *poduct);
+unsigned int getQuantityProduct(Product *product);
 
 /**
  * @brief Get the quantity sales product;
@@ -54,41 +54,41 @@ unsigned getQuantitySalesProduct(Product *product);
  * @brief Set product name;
  * 
  * @param product Pointer to the Absract Data Type representing a structure that contains the (update) information for a product;
- * @return char Pointer to the vector/list/array of char representing the update name of product;
+ * @param name New name to the product;
  */
-char *setProductName(Product *product);
+void*setProductName(Product *product, char *name);
 
 /**
  * @brief Set the product price;
  * 
  * @param product Pointer to the Absract Data Type representing a structure that contains the (update) information for a product;
- * @return float Update price of product;
+ * @param price New price to the product;
  */
-float setProductPrice(Product *product);
+void setProductPrice(Product *product, float price);
 
 /**
  * @brief Set the product discount;
  * 
  * @param product Pointer to the Absract Data Type representing a structure that contains the (update) information for a product;
- * @return float Update value (percent) of product;
+ * @param percent New percet of discount to  the price for a product
  */
-float setProductDiscount(Product *product);
+void setProductDiscount(Product *product, float percent);
 
 /**
  * @brief Buy product (Remove a quantity from the stock product);
  * 
  * @param product Pointer to the Absract Data Type representing a structure that contains the (update) information for a product;
- * @param quantitiy Quantity to be removed from the stock product; 
+ * @param quantity Quantity to be removed from the stock product; 
  */
-void buyProduct(Product *product, unsigned int quantitiy);
+void buyProduct(Product *product, unsigned int quantity);
 
 /**
  * @brief Sell product (Remove a quantity from the stock product);
  * 
  * @param product Pointer to the Absract Data Type representing a structure that contains the (update) information for a product;
- * @param quantitiy Quantity to be added to the stock product; 
+ * @param quantity Quantity to be added to the stock product; 
  */
-void sellProduct(Product *product, unsigned int quantitiy);
+void sellProduct(Product *product, unsigned int quantity);
 
 /**
  * @brief Get the discounted price product;
