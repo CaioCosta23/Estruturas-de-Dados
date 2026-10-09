@@ -26,13 +26,13 @@ static unsigned short int compare(dataType data1, dataType data2) {
 }
 
 /**
- * @brief Find de index of an element (biggest or smallest element);
+ * @brief Find the index of an element (biggest or smallest element);
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
  * @param getElement Callback function where get the element (biggest or smallest) for get the index of this element;
  * @return unsigned int Index of element sought (biggest or smallest element);
  */
-static unsigned int findIndex(Vector *vector, dataType getElement(Vector *vector)) {
+static unsigned int findIndex(Vector *vector, dataType (getElement)(Vector*)) {
     unsigned int d;
 
     for(d = 0; d < vectorSize(vector); d++)
@@ -182,7 +182,7 @@ void vectorInsert(Vector *vector, unsigned int index, dataType data) {
 dataType vectorRemove(Vector *vector, unsigned int index) {
     unsigned int d;
 
-    for(d = index; d < (vector->size - 1); d--)
+    for(d = index; d < (vector->size - 1); d++)
         vectorSwap(vector, d, (d + 1));
         
     vectorPopBack(vector);
