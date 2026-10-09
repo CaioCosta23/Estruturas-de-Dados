@@ -32,9 +32,9 @@ dataType stackPop(Stack *stack);
  * @brief Checks if stack is empty;
  * 
  * @param stack Pointer to the Abstract Data Type represents structure that contains (update) information to the stack;
- * @return int 1 (true) if stack is empty or 0 (false), otherwise;
+ * @return unsigned short int 1 (true) if stack is empty or 0 (false), otherwise;
  */
-int stackEmpty(Stack *stack);
+unsigned short int stackEmpty(Stack *stack);
 
 /**
  * @brief Destroy (dynamically free/desallocates memory for) a stack;
