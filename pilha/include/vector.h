@@ -3,6 +3,8 @@
 
 typedef void* dataType;
 
+typedef short int (*fptr)(dataType*, dataType*);
+
 typedef struct Vector Vector;
 
 /**
