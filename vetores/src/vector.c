@@ -163,7 +163,7 @@ dataType vectorMax(Vector *vector) {
 }
 
 dataType vectorMin(Vector *vector) {
-    return getRelevantValue(vector, BIG);
+    return getRelevantValue(vector, SMALL);
 }
 
 void vectorPopFront(Vector *vector) {
