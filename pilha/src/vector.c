@@ -50,6 +50,13 @@ static dataType getRelevantValue(Vector *vector, short int characteristicSearch)
     return marker;
 }
 
+/**
+ * @brief Find the index of an element (biggest or smalles element);
+ * 
+ * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
+ * @param getElement Callback function (Pointer to function) to get the element sought; 
+ * @return unsigned int Value of index of element;
+ */
 static unsigned int findIndex(Vector *vector, dataType (getElement)(Vector*)) {
     unsigned int d;
 
