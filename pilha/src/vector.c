@@ -181,7 +181,12 @@ dataType vectorRemove(Vector *vector, unsigned int index) {
 }
 
 void vectorSort(Vector *vector) {
+    unsigned int d1, d2;
 
+    for(d1 = 0; d1 < (vector->size- 1); d1++)
+        for(d2 = (d1 + 1); d2 < vector->size; d2++)
+            if (vector->compare(vector->data[d1], vector->data[d2]) == 1)
+                vectorSwap(vector, d1, d2);
 }
 
 void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2) {
