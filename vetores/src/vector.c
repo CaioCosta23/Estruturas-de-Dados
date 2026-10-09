@@ -61,19 +61,6 @@ static short int getRelevantValue(Vector *vector, short int characteristicSearch
 }
 
 /**
- * @brief Push back an element to the last position of vector;
- * 
- * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
- * @param index Index of element to be push  to the last position in the vector;
- */
-static void pushBackElements(Vector *vector, unsigned int index) {
-    unsigned int d;
-
-    for(d = (vector->size - 1); d >= index; d--)
-        vectorSwap(vector, d, (d + 1));
-}
-
-/**
  * @brief Realloc the memory of vector;
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
@@ -182,14 +169,22 @@ void vectorInsert(Vector *vector, unsigned int index, dataType data) {
     if (vector->size == vector->allocated)
         vectorReallocation(vector);
 
-    pushBackElements(vector, index);
+    unsigned int d;
+
+    for(d = (vector->size - 1); d >= index; d--)
+        vectorSwap(vector, d, (d + 1));
+
     vector->size += 1;
 
     vector->data[index] = data;
 }
 
 dataType vectorRemove(Vector *vector, unsigned int index) {
-    pushBackElements(vector, index);
+    unsigned int d;
+
+    for(d = index; d < (vector->size - 1); d--)
+        vectorSwap(vector, d, (d + 1));
+        
     vectorPopBack(vector);
 
     return vector->data[vector->size];
