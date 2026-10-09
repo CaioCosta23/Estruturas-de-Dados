@@ -9,8 +9,6 @@
 #define EQUAL 0
 #define BIG 1
 
-typedef short int (*fptr)(dataType*, dataType*);
-
 struct Vector{
     dataType *data;
     unsigned int size, allocated;
