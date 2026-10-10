@@ -39,13 +39,6 @@ dataType queueDequeue(Queue *queue);
 int queueEmpty(Queue *queue);
 
 /**
- * @brief Prints the data from a queue to the screen;
- * 
- * @param queue Pointer to the Abstract Data Type represent a structure that contains (update) informations for a queue;
- */
-void queuePrint(Queue *queue);
-
-/**
  * @brief Destroy (dynamically free/desallocates memory for) a queue;
  * 
  * @param queue Pointer to the Abstract Data Type represent a structure that contains (update) informations for a queue;
