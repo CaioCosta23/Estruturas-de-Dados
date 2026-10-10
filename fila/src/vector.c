@@ -155,7 +155,7 @@ dataType *vectorMin(Vector *vector) {
     return getRelevantValue(vector, SMALL);
 }
 
-void vectorPopFont(Vector *vector) {
+void vectorPopFront(Vector *vector) {
     dataType dataRemoved;
 
     dataRemoved = vectorRemove(vector, 0);
