@@ -111,7 +111,7 @@ dataType *vectorMin(Vector *vector);
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
  */
-void vectorPopFont(Vector *vector);
+void vectorPopFront(Vector *vector);
 
 /**
  * @brief Removes the element of the last position of the vector;
