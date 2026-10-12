@@ -107,14 +107,14 @@ dataType *vectorMax(Vector *vector);
 dataType *vectorMin(Vector *vector);
 
 /**
- * @brief Removes the element of the first position of the vector;
+ * @brief Removes the element from the first position of the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
  */
 void vectorPopFront(Vector *vector);
 
 /**
- * @brief Removes the element of the last position of the vector;
+ * @brief Removes the element from the last position of the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
  */
@@ -133,8 +133,8 @@ void vectorInsert(Vector *vector, unsigned int index, dataType data);
  * @brief Removes an element at the specific position from the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
- * @param index 
- * @return dataType 
+ * @param index Index to the element to be removed;
+ * @return dataType Element that was removed;
  */
 dataType vectorRemove(Vector *vector, unsigned int index);
 
