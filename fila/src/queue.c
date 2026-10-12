@@ -26,7 +26,7 @@ void queueEnqueue(Queue *queue, dataType data) {
 }
 
 dataType queueDequeue(Queue *queue) {
-    vectorPopFront(queue->vector);
+    return vectorRemove(queue->vector, 0);
 }
 
 int queueEmpty(Queue *queue) {
