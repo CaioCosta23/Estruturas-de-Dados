@@ -23,7 +23,7 @@ Vector *vectorConstruct();
 void vectorSetCompareFunction(Vector *vector, fptr function);
 
 /**
- * @brief Get get size to the vector;
+ * @brief Get size to the vector;
  * 
  * @param vector Pointer to the Abstract Data Type represents structure that contains (update) informations for a vector;
  * @return unsigned int Size of vector;
