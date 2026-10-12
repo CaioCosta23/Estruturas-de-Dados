@@ -151,9 +151,9 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2);
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
  * @param data Element sought in the vector;
- * @return unsigned int Index of element found in the vector, or -1 otherwise;
+ * @return int Index of element found in the vector, or -1 otherwise;
  */
-unsigned int vectorBinarySearch(Vector *vector, dataType data);
+int vectorBinarySearch(Vector *vector, dataType data);
 
 /**
  * @brief Reverse the vector;
