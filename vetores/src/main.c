@@ -5,8 +5,19 @@
 
 #include "../include/vector.h"
 
+/**
+ * @brief Print a vector;
+ * 
+ * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
+ */
 void printVector(Vector *vector);
 
+
+/**
+ * @brief 
+ * 
+ * @return int Main function of program;
+ */
 int main() {
     unsigned int quantidadeAcoes, a;
     Vector *vector;
