@@ -3,7 +3,9 @@
 
 #include <string.h>
 
-#include "include//vector.h"
+#include "../include/vector.h"
+
+void printVector(Vector *vector);
 
 int main() {
     unsigned int quantidadeAcoes, a;
@@ -54,4 +56,20 @@ int main() {
     vectorDestroy(vector);
 
     return 0;
+}
+
+void printVector(Vector *vector) {
+    unsigned int d, size;
+
+    size = vectorSize(vector);
+
+    printf("[");
+
+    for(d = 0; d < size; d++) {
+        printf("%d", vector->data[d]);
+        
+        if (d < (size - 1))
+            printf(",");
+    }
+    printf("]\n");
 }
