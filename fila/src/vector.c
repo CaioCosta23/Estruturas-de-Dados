@@ -3,11 +3,6 @@
 
 #include "../include/vector.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "../include/vector.h"
-
 #define SIZE_ALLOCATED 50
 
 #define SMALL -1
@@ -171,12 +166,11 @@ void vectorInsert(Vector *vector, unsigned int index, dataType data) {
 
     unsigned int d;
 
-    for(d = (vector->size - 1); d >= index; d--)
-        vectorSwap(vector, d, (d + 1));
-
-    vector->size +=1;
+    for(d = vector->size; d > index; d--)
+        vectorSwap(vector, (d - 1), d);
 
     vector->data[index] = data;
+    vector->size += 1;
 }
 
 dataType vectorRemove(Vector *vector, unsigned int index) {
@@ -208,7 +202,7 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2) {
 }
 
 dataType vectorBinarySearch(Vector *vector, dataType data) {
-    const int NOT_FOUND = 1;
+    const int NOT_FOUND = NULL;
     unsigned int inicio, meio, fim;
 
     vectorSort(vector);
@@ -220,13 +214,25 @@ dataType vectorBinarySearch(Vector *vector, dataType data) {
         meio = inicio + (fim - inicio) / 2;
 
         if (vector->data[meio] == data)
-            return vector->data;
+            return vector->data[meio];
         else if (vector->data[meio] < data)
-            fim = meio - 1;
+            inicio = meio + 1;    
         else
-            inicio = meio + 1;
+            fim = meio - 1;
     }
     return NOT_FOUND;
+}
+
+void vectorReverse(Vector *vector) {
+    Vector *copy;
+    unsigned ds, dc;
+
+    copy = vectorCopy(vector);
+
+    for(dc = (vector->size - 1), ds = 0; dc >= 0, ds < vector->size; dc--, ds++)
+        vector->data[ds] = copy->data[dc];
+
+    vectorDestroy(copy);
 }
 
 void vectorClear(Vector *vector)  {
