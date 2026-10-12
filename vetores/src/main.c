@@ -14,7 +14,7 @@ void printVector(Vector *vector);
 
 
 /**
- * @brief 
+ * @brief Perform some operations on a vector;
  * 
  * @return int Main function of program;
  */
@@ -26,8 +26,8 @@ int main() {
          SET[4] = "SET", MAX[4] = "MAX", MIN[4] = "MIN", POP[4] = "POP",
          INSERT[7] = "INSERT", REMOVE[7] = "REMOVE", SORT[5] = "SORT",
          REVERSE[8] = "REVERSE", CLEAR[6] = "CLEAR";
+    int value;
 
-    
     scanf("%u\n", &quantidadeAcoes);
 
     vector = vectorConstruct();
@@ -36,11 +36,29 @@ int main() {
         scanf("%s", acao);
 
         if (strcmp(acao, COPY) == 0) {
+            Vector *copy;
 
+            copy = vectorCopy(vector);
+
+            printVector(copy);
+            vectorDestroy(copy);
         }else if (strcmp(acao, PUSH) == 0) {
-
-        }else if (strcmp(acao, FIND) == 0) {
             
+
+            if (scanf("%d", &value) == 1)
+                vectorPushBack(vector, value);
+            else
+                printf("Tipo de dado invalido.\n");
+
+            printVector(vector);
+        }else if (strcmp(acao, FIND) == 0) {
+            if (vectorSize(vector) > 0) {
+                if (scanf("%d", &value) == 1) {
+                    printf("%d\n", vectorFind(vector, value));
+                }else {
+                    printf("Tipo de dado invalido.\n");
+                }
+            }
         }else if (strcmp(acao, GET) == 0) {
             
         }else if (strcmp(acao, MAX) == 0) {
