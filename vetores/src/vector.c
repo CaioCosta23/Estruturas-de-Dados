@@ -45,9 +45,9 @@ static unsigned int findIndex(Vector *vector, dataType (getElement)(Vector*)) {
  * 
  * @param vector Pointer to the Abstract Data Type represent a structure that contains the (update) information for a vector;
  * @param  characteristicSearch Characterist of element to be compare and search;
- * @return short int Element relevant in the vector (biggest or smalles element);
+ * @return dataTpe Element relevant in the vector (biggest or smalles element);
  */
-static short int getRelevantValue(Vector *vector, short int characteristicSearch) {
+static dataType getRelevantValue(Vector *vector, short int characteristicSearch) {
     unsigned int d;
     dataType marker;
 
@@ -143,7 +143,7 @@ unsigned int vectorArgMax(Vector *vector) {
 }
 
 unsigned int vectorArgMin(Vector *vector) {
-    return findIndex(vector, vectorMax);
+    return findIndex(vector, vectorMin);
 }
 
 
