@@ -171,12 +171,11 @@ void vectorInsert(Vector *vector, unsigned int index, dataType data) {
 
     unsigned int d;
 
-    for(d = (vector->size - 1); d >= index; d--)
-        vectorSwap(vector, d, (d + 1));
-
-    vector->size += 1;
+    for(d = vector->size; d > index; d--)
+        vectorSwap(vector, (d - 1), d);
 
     vector->data[index] = data;
+    vector->size += 1;
 }
 
 dataType vectorRemove(Vector *vector, unsigned int index) {
@@ -209,25 +208,25 @@ void vectorSwap(Vector *vector, unsigned int index1, unsigned int index2) {
     vector->data[index2] = auxiliar;
 }
 
-unsigned int vectorBinarySearch(Vector *vector, dataType data) {
+int vectorBinarySearch(Vector *vector, dataType data) {
     const int NOT_FOUND = -1;
     unsigned int inicio, meio, fim;
 
     vectorSort(vector);
 
     inicio = 0;
-    fim = vectorSize(vector);
+    fim = vectorSize(vector) - 1;
 
     while(inicio <= fim) {
         meio = inicio + (fim - inicio) / 2;
 
         if (vector->data[meio] == data)
-            return vector->data;
+            return vector->data[meio];
 
         if (vector->data[meio] < data)
-            fim = meio -1;
-        else
             inicio = meio + 1;
+        else
+            fim = meio -1;
     }
 
     return NOT_FOUND;
