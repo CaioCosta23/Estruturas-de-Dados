@@ -233,11 +233,15 @@ int vectorBinarySearch(Vector *vector, dataType data) {
 }
 
 void vectorReverse(Vector *vector) {
-    unsigned int d1, d2;
-    
-    for(d1 = 0; d1 < (vector->size - 1); d1++)
-        for(d2 = d1 + 1; d2 < vector->size; d2++)
-            vectorSwap(vector, d1, d2);
+    Vector *copy;
+    unsigned ds, dc;
+
+    copy = vectorCopy(vector);
+
+    for(dc = (vector->size - 1), ds = 0; dc >= 0, ds < vector->size; dc--, ds++)
+        vector->data[ds] = copy->data[dc];
+
+    vectorDestroy(copy);
 }
 
 void vectorClear(Vector *vector) {
