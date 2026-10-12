@@ -216,9 +216,9 @@ dataType vectorBinarySearch(Vector *vector, dataType data) {
         if (vector->data[meio] == data)
             return vector->data[meio];
         else if (vector->data[meio] < data)
-            fim = meio - 1;
+            inicio = meio + 1;    
         else
-            inicio = meio + 1;
+            fim = meio - 1;
     }
     return NOT_FOUND;
 }
