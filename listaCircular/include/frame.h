@@ -46,6 +46,6 @@ float getFrameTimestamp(Frame *frame);
  * 
  * @param frame Pointer to the Abstract Data Type represent structure thats contains (update) for a frame;
  */
-void frameDestroy(Frame *frame);
+void destroyFrame(Frame *frame);
 
 #endif
