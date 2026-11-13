@@ -12,7 +12,6 @@ struct CircularArray {
     fptr *destroy;
 };
 
-
 /**
  * @brief Realloc (dynamically) the memory or array of data in circular array;
  * 
@@ -35,29 +34,40 @@ static unsigned short int reallocCircularArray(CircularArray *circularArray) {
 
         return 0;
     } else {
-        unsigned int d, oldIndex;
-
-        // "Refaz" a lista colocando os elementos de forma contígua (sequencial) no 'array' circular (agora, com tamanho novo);
-        for (d = 0; d < circularArray->size; d++) {
-            oldIndex = (circularArray->start + d) % circularArray->capacity;
-
-            temporaryArrayData[d] = circularArray->data[oldIndex];
-            temporaryArrayFree[d] = circularArray->destroy[oldIndex];
-        }
+        unsigned int d;
 
         /*
-        // Verifica se o vetor está após o início local (sequencial) do 'array';
+        // "Refaz" a lista colocando os elementos de forma contígua (sequencial) no 'array' circular (agora, com tamanho novo);
 
-        // Move os elementos que estavam no funal da lista circular (mas no início do veto - fisicamente) para trás dos elementos que estavam
-        // no final do vetor (fisicamente) mantendo a concordância da ordem dos elementos na lista (mesmo com o aumento do 'array'
-        // sendo contíguo - sequncial - o que quebra em teoria aordem dos elementos de uma lista circular);
-            if (circularArray->start > 0) {
-                for (d = 0; d < circularArray->start; d++) {
-                    temporaryArrayData[circularArray->capacity + d] = circularArray->data[d];
-                    temporaryArrayFree[circularArray->capacity + d] = circularArray->destroy[d];
-                }
+        // Neste caso seria necessário em vez de usar o 'realloc' utilizar novas alocações de memória para os vetores temporários,
+        // Desalocar os originais (que estão na estrutura circular) e colocar os temporários na estrutura, uma vez que, ao não fazer isso,
+        // ao substituir as posições, as "novas primeiras posições" vão sobrescrever as "antigas últimas posições" do 'array' circular,
+        // fazendo com que as os elementos que estavam no ínicio (físico) do vetor sejam perdidos;
+
+            unsigned int oldIndex;
+
+            for (d = 0; d < circularArray->size; d++) {
+                oldIndex = (circularArray->start + d) % circularArray->capacity;
+
+                temporaryArrayData[d] = circularArray->data[oldIndex];
+                temporaryArrayFree[d] = circularArray->destroy[oldIndex];
             }
         */
+
+        
+        /* 
+         * Verifica se o vetor está após o início local (sequencial) do 'array';
+
+         * Move os elementos que estavam no funal da lista circular (mas no início do veto - fisicamente) para trás dos elementos que estavam
+         * no final do vetor (fisicamente) mantendo a concordância da ordem dos elementos na lista (mesmo com o aumento do 'array'
+         * sendo contíguo - sequncial - o que quebra em teoria aordem dos elementos de uma lista circular);
+        */
+        if (circularArray->start > 0) {
+            for (d = 0; d < circularArray->start; d++) {
+                temporaryArrayData[circularArray->capacity + d] = temporaryArrayData[d];
+                temporaryArrayFree[circularArray->capacity + d] = temporaryArrayFree[d];
+            }
+        }
         
         circularArray->capacity = newCapacity;
         circularArray->data = temporaryArrayData;
