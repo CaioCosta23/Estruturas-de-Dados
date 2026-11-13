@@ -22,19 +22,22 @@ struct CircularArray {
 static unsigned short int reallocCircularArray(CircularArray *circularArray) {
     const unsigned short int TWO = 2;
     unsigned int newCapacity;
-    void **temporaryArray = NULL;
+    void **temporaryArrayData = NULL;
+    fptr *temporaryArrayFree = NULL;
 
     newCapacity = circularArray->capacity * TWO;
 
-    circularArray->data = (void**)realloc(temporaryArray, newCapacity *sizeof(void*));
+    temporaryArrayData = (void**)realloc(circularArray->data, newCapacity * sizeof(void*));
+    temporaryArrayFree = (fptr*)realloc(circularArray->destroy, newCapacity * sizeof(fptr));
 
-    if (temporaryArray == NULL) {
-        printf("Error Dynamically reallocation of memory of array of data in cicular array fail.\n");
+    if ((temporaryArrayData == NULL) || temporaryArrayFree == NULL) {
+        printf("Error Dynamically reallocation of memory of array of data or array of function pointers for free elements in cicular array, fail.\n");
 
         return 0;
     } else {
         circularArray->capacity = newCapacity;
-        circularArray->data = temporaryArray;
+        circularArray->data = temporaryArrayData;
+        circularArray->destroy = temporaryArrayFree;
 
         return 1;
     }
@@ -61,11 +64,20 @@ CircularArray *circularArrayConstruct() {
         circularArrayDestroy(circularArray);
     }
 
+    circularArray->destroy = NULL;
+
+    circularArray->destroy = (fptr*)malloc(INITIAL_CAPACITY * sizeof(fptr));
+
+    if (circularArray->destroy == NULL) {
+        printf("Error! Dynamically allocation of memory for array of function pointers for free elements in array, fail.\n");
+        circularArrayDestroy(circularArray);
+        exit(1);
+    }
+
     circularArray->size = 0;
     circularArray->capacity = INITIAL_CAPACITY;
     circularArray->start = 0;
     circularArray->end = 0;
-    circularArray->destroy = NULL;
 
     return circularArray;
 }
@@ -87,7 +99,7 @@ void circularArrayPush(CircularArray *circularArray, void *data, fptr freeElemen
     if (necessaryReallocation) {
         if (reallocationSuccessfully) {
             circularArray->end = (circularArray->start + circularArray->size) % circularArray->capacity;
-            circularArray->data[circularArray->end];
+            circularArray->data[circularArray->end] = data;
             circularArray->destroy[circularArray->end] = freeElement;
             circularArray->size++;
         }else {
@@ -104,7 +116,7 @@ void circularArrayPush(CircularArray *circularArray, void *data, fptr freeElemen
 void *circularArrayPop(CircularArray *circularArray) {
     void *elementRemoved;
 
-    elementRemoved = circularArray->data[circularArray->end];
+    elementRemoved = circularArray->data[circularArray->start];
     circularArray->data[circularArray->start] = NULL;
     circularArray->destroy[circularArray->start] = NULL;
     circularArray->start = (circularArray->start + 1) % circularArray->capacity;
@@ -130,6 +142,9 @@ void circularArrayDestroy(CircularArray *circularArray) {
                 for(d = 0; d < circularArray->size; d++) 
                     circularArray->destroy[(circularArray->start + d) % circularArray->capacity](circularArray->data[(circularArray->start + d) % circularArray->capacity]);
             }
+            free(circularArray->destroy);
+            circularArray->destroy = NULL;
+
             free(circularArray->data);
             circularArray->data = NULL;
         }
