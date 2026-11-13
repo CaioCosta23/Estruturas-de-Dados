@@ -3,6 +3,8 @@
 
 typedef struct CircularArray CircularArray;
 
+typedef void (*fptr)(void*);
+
 /**
  * @brief Create (dynamically allocated memory for) a circular array;
  * 
@@ -23,8 +25,9 @@ unsigned int circularArrayGetSize(CircularArray *circularArray);
  * 
  * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
  * @param data Data to addef in circular array;
+ * @param freeElement Function pointer ('callback') to function for free element;
  */
-void circularArrayPush(CircularArray *circularArray, void *data);
+void circularArrayPush(CircularArray *circularArray, void *data, fptr freeElement);
 
 /**
  * @brief Remove an element in the circular array;
