@@ -22,15 +22,16 @@ unsigned int circularArrayGetSize(CircularArray *circularArray);
  * @brief Add an element in the ccircular array;
  * 
  * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
+ * @param data Data to addef in circular array;
  */
-void circularArrayPush(CircularArray *circularArray);
+void circularArrayPush(CircularArray *circularArray, void *data);
 
 /**
  * @brief Remove an element in the circular array;
  * 
  * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
  */
-void circularArrayPop(CircularArray *circularArray);
+void *circularArrayPop(CircularArray *circularArray);
 
 /**
  * @brief Get an element of circular array;
@@ -55,14 +56,6 @@ unsigned short int circularArrayIsEmpty(CircularArray *circularArray);
  * @return unsigned short int 1 (true) if circular array is full or 0 (false) everywhere;
  */
 unsigned short int circularArrayIsFull(CircularArray *circularArray);
-
-/**
- * @brief Get an element of circular array;
- * 
- * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
- * @param index Index of element in circular array;
- */
-void circularArrayGetElement(CircularArray *circularArray, unsigned int index);
 
 /**
  * @brief Destroy (dynamically free/desallocated memory for) a circular array;
