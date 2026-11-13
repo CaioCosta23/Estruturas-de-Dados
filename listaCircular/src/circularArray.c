@@ -6,10 +6,6 @@
 
 #define INITIAL_CAPACITY 10
 
-
-typedef void (*fptr)(void*);
-
-
 struct CircularArray {
     void **data;
     unsigned int start, end, size, capacity;
@@ -26,7 +22,7 @@ struct CircularArray {
 static unsigned short int reallocCircularArray(CircularArray *circularArray) {
     const unsigned short int TWO = 2;
     unsigned int newCapacity;
-    void **temporaryArray;
+    void **temporaryArray = NULL;
 
     newCapacity = circularArray->capacity * TWO;
 
@@ -58,7 +54,7 @@ CircularArray *circularArrayConstruct() {
 
     circularArray->data = NULL;
 
-    circularArray->data = (void**)malloc(sizeof(void*));
+    circularArray->data = (void**)malloc(INITIAL_CAPACITY * sizeof(void*));
 
     if (circularArray->data == NULL) {
         printf("Erroe! Dynamically allocation for array of data in circular array fail.\n");
@@ -79,7 +75,7 @@ unsigned int circularArrayGetSize(CircularArray *circularArray) {
 }
 
 
-void circularArrayPush(CircularArray *circularArray, void *data, fptr *freeElement) {
+void circularArrayPush(CircularArray *circularArray, void *data, fptr freeElement) {
     unsigned short necessaryReallocation = 0;
     unsigned int reallocationSuccessfully;
 
@@ -99,7 +95,7 @@ void circularArrayPush(CircularArray *circularArray, void *data, fptr *freeEleme
         }
     }else {
         circularArray->end = (circularArray->start + circularArray->size) % circularArray->capacity;
-        circularArray->data[circularArray->end];
+        circularArray->data[circularArray->end] = data;
         circularArray->destroy[circularArray->end] = freeElement;
         circularArray->size++;
     }
@@ -109,10 +105,10 @@ void *circularArrayPop(CircularArray *circularArray) {
     void *elementRemoved;
 
     elementRemoved = circularArray->data[circularArray->end];
-    circularArray->data[circularArray->end] = NULL;
-    circularArray->destroy[circularArray->end] = NULL;
+    circularArray->data[circularArray->start] = NULL;
+    circularArray->destroy[circularArray->start] = NULL;
+    circularArray->start = (circularArray->start + 1) % circularArray->capacity;
     circularArray->size--;
-    circularArray->end = (circularArray->start + circularArray->size) % circularArray->capacity;
 
     return elementRemoved;
 }
