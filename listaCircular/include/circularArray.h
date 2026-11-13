@@ -33,6 +33,38 @@ void circularArrayPush(CircularArray *circularArray);
 void circularArrayPop(CircularArray *circularArray);
 
 /**
+ * @brief Get an element of circular array;
+ * 
+ * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
+ * @param index Index of element in circular array;
+ */
+void circularArrayGetElement(CircularArray *circularArray, unsigned int index);
+
+/**
+ * @brief Check if circular array is empty;
+ * 
+ * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
+ * @return unsigned short int 1 (true) if circular array is empty or 0 (false) everywhere;
+ */
+unsigned short int circularArrayIsEmpty(CircularArray *circularArray);
+
+/**
+ * @brief Check if circular array is full;
+ * 
+ * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
+ * @return unsigned short int 1 (true) if circular array is full or 0 (false) everywhere;
+ */
+unsigned short int circularArrayIsFull(CircularArray *circularArray);
+
+/**
+ * @brief Get an element of circular array;
+ * 
+ * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
+ * @param index Index of element in circular array;
+ */
+void circularArrayGetElement(CircularArray *circularArray, unsigned int index);
+
+/**
  * @brief Destroy (dynamically free/desallocated memory for) a circular array;
  * 
  * @param circularArray Pointer to the Abstract Data Type represents sructure that contains (update) information to the circular array;
