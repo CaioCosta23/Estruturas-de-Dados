@@ -50,7 +50,7 @@ static unsigned short int reallocCircularArray(CircularArray *circularArray) {
 
         // Move os elementos que estavam no funal da lista circular (mas no início do veto - fisicamente) para trás dos elementos que estavam
         // no final do vetor (fisicamente) mantendo a concordância da ordem dos elementos na lista (mesmo com o aumento do 'array'
-        // sedo contíguo - sequncial - o que quebra em teoria aordem dos elementos de uma lista circular);
+        // sendo contíguo - sequncial - o que quebra em teoria aordem dos elementos de uma lista circular);
             if (circularArray->start > 0) {
                 for (d = 0; d < circularArray->start; d++) {
                     temporaryArrayData[circularArray->capacity + d] = circularArray->data[d];
@@ -162,13 +162,15 @@ void circularArrayDestroy(CircularArray *circularArray) {
     if (circularArray != NULL) { 
         if (circularArray->data != NULL) {
             if (!(circularArrayIsEmpty(circularArray)))  {
-                unsigned int d;
-
-                for(d = 0; d < circularArray->size; d++) 
-                    circularArray->destroy[(circularArray->start + d) % circularArray->capacity](circularArray->data[(circularArray->start + d) % circularArray->capacity]);
+                if (circularArray->destroy != NULL) {
+                    unsigned int d;
+                    
+                    for(d = 0; d < circularArray->size; d++) 
+                        circularArray->destroy[(circularArray->start + d) % circularArray->capacity](circularArray->data[(circularArray->start + d) % circularArray->capacity]);
+                }
+                free(circularArray->destroy);
+                circularArray->destroy = NULL;
             }
-            free(circularArray->destroy);
-            circularArray->destroy = NULL;
 
             free(circularArray->data);
             circularArray->data = NULL;
